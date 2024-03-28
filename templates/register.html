@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registration</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <h2>Registration Form</h2>
+
+        <div id="messageDiv" style="display: none;">
+            <p id="message"></p>
+        </div>
+    
+        <form id="registrationForm" method="post" action="/register">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="FirstName" required><br><br>
+            
+            <label for="middleName">Middle Name:</label>
+            <input type="text" id="middleName" name="MiddleName"><br><br>
+            
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="LastName" required><br><br>
+            
+            <label for="userID">User ID:</label>
+            <input type="text" id="userID" name="User-ID" required><br><br>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="Password" required><br><br>
+            
+            <label for="accountType">Account Type:</label>
+            <select id="accountType" name="TypeOfAccount" required>
+                <option value="Student">Student</option>
+                <option value="Lecturer">Lecturer</option>
+                <option value="Admin">Admin</option>
+            </select><br><br><br>
+            
+            <button class="btn" type="submit">Register</button>
+        </form>
+        <script>
+            const params = new URLSearchParams(window.location.search);
+            const message = params.get('message');
+            const messageDiv = document.getElementById('messageDiv');
+            const messagePara = document.getElementById('message');
+    
+            if (message) {
+                messagePara.textContent = message;
+                messageDiv.style.display = 'block';
+            }
+        </script>
+    </body>
+</html>
